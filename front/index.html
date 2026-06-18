@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coworking — Gestión de Reservas</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container header__inner">
+      <h1 class="header__title">Coworking Space</h1>
+      <p class="header__subtitle">Gestión de reservas</p>
+    </div>
+  </header>
+
+  <main class="main container">
+    <section class="feedback" id="feedback" aria-live="polite" hidden>
+      <p class="feedback__message" id="feedbackMessage"></p>
+    </section>
+
+    <section class="form-section">
+      <h2 class="section-title">Nueva reserva</h2>
+      <form class="form" id="reservationForm" novalidate>
+        <div class="form__group">
+          <label class="form__label" for="spaceId">Espacio</label>
+          <select class="form__input" id="spaceId" required>
+            <option value="">— Selecciona un espacio —</option>
+            <option value="SALA-A">Sala A — Privada (4 pax)</option>
+            <option value="SALA-B">Sala B — Privada (8 pax)</option>
+            <option value="MESA-01">Mesa 01 — Open space</option>
+            <option value="MESA-02">Mesa 02 — Open space</option>
+            <option value="MESA-03">Mesa 03 — Open space</option>
+            <option value="LOUNGE">Lounge — Zona común</option>
+          </select>
+          <span class="form__error" id="spaceIdError"></span>
+        </div>
+
+        <div class="form__group">
+          <label class="form__label" for="startDate">Fecha inicio</label>
+          <input class="form__input" type="date" id="startDate" required />
+          <span class="form__error" id="startDateError"></span>
+        </div>
+
+        <div class="form__group">
+          <label class="form__label" for="endDate">Fecha fin</label>
+          <input class="form__input" type="date" id="endDate" required />
+          <span class="form__error" id="endDateError"></span>
+        </div>
+
+        <div class="form__group">
+          <label class="form__label" for="email">Correo electrónico</label>
+          <input
+            class="form__input"
+            type="email"
+            id="email"
+            placeholder="usuario@ejemplo.com"
+            required
+          />
+          <span class="form__error" id="emailError"></span>
+        </div>
+
+        <button class="form__btn" type="submit">Crear reserva</button>
+      </form>
+    </section>
+
+    <section class="list-section">
+      <h2 class="section-title">Reservas existentes</h2>
+      <div class="table-wrapper">
+        <table class="table" id="reservationsTable">
+          <thead>
+            <tr>
+              <th>Espacio</th>
+              <th>Inicio</th>
+              <th>Fin</th>
+              <th>Email</th>
+              <th>Acción</th>
+            </tr>
+          </thead>
+          <tbody id="reservationsBody">
+            <!-- Se renderiza desde JS -->
+          </tbody>
+        </table>
+      </div>
+      <p class="empty-state" id="emptyState">
+        No hay reservas registradas.
+      </p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <small>&copy; 2026 Coworking Space — Todos los derechos reservados.</small>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
